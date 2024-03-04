@@ -91,7 +91,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.FOOD_FOR_RAT, function (sprite, 
     numBAKEDTREATS = numBAKEDTREATS + 1
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
-    tiles.setCurrentTilemap(tilemap`level1`)
+    game.splash("You can finally go home!")
+    game.gameOver(true)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     MOP_ATTACK = sprites.create(img`
@@ -156,63 +157,26 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     pause(1000)
     sprites.destroy(MOP_ATTACK)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.THE_BIG_DEAL, function (sprite, otherSprite) {
+    if (numBAKEDTREATS >= 21 && Goal >= 11) {
+        tiles.setCurrentTilemap(tilemap`level9`)
+        scene.setBackgroundColor(15)
+        scene.cameraShake(10, 1000)
+        tiles.placeOnTile(Chef_1, tiles.getTileLocation(23, 15))
+        game.showLongText("RAHHHHHHHHHHHH!!!!", DialogLayout.Bottom)
+        game.showLongText("You have killed my people!", DialogLayout.Bottom)
+        game.showLongText("NOW YOU SHALL PAY!", DialogLayout.Bottom)
+        doSomething(randint(10, 25))
+    }
+})
 function doSomething (num: number) {
-    list = sprites.allOfKind(SpriteKind.Enemy)
-    if (num < 50) {
-        newRATENEMY1 = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . 3 3 3 3 3 3 3 3 . 
-            . . . . . . . . . . . . 3 3 3 . 
-            . . . . . . . . . 3 3 3 . . . . 
-            . . . . . . . 3 3 . . . . . . . 
-            . . . . . 3 3 . . . . . . . . . 
-            . . . . . 3 3 3 . . . . . . . . 
-            . . . . 3 3 . . . . . . . . . . 
-            . . 3 3 . . . . . . . . . . . . 
-            . . 3 3 3 3 . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.Enemy)
-        newRATENEMY2 = sprites.create(img`
-            . . 3 . . . . . . . . . . . . . 
-            . . 3 . . . . . . . . . . . . . 
-            . . . 3 . . . . . . . . . . . . 
-            . . . . 3 . . . . . . . . . . . 
-            . . . . . 3 3 . . . . . . . . . 
-            . . . . . . . 3 . . . . . . . . 
-            . . . . . . . . 3 . . . . . . . 
-            . . . . . . . . . 3 . . . . . . 
-            . . . . . . . . . 3 . . . . . . 
-            . . . . . . . . . . 3 . . . . . 
-            . . . . . . . . . . . 3 3 . . . 
-            . . . . . . . . . . . . . 3 . . 
-            . . . . . . . . . . . . . . 3 . 
-            . . . . . . . . . . . . . . 3 . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.Enemy)
-        newRATENEMY3 = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            3 3 3 3 3 3 3 3 3 . . . . . . . 
-            3 . . . . . . . . 3 3 . . . . . 
-            3 . . . . . . . . . . 3 . . . . 
-            3 . . . . . . . . . . 3 . . . . 
-            3 . . . . . . . . . . . 3 . . . 
-            3 . . . . . . 3 . . . . 3 . . . 
-            3 . . . . 3 3 . . . . . 3 . . . 
-            3 . . . . 3 . . . . . . 3 . . . 
-            3 . . . 3 . . . . . . 3 . . . . 
-            3 . . . 3 . . . 3 3 3 3 . . . 3 
-            3 . . . . 3 . . . . . . . . . 3 
-            3 . . . . 3 . . . . . . . . . 3 
-            3 . . . . 3 . . . . . . . . . 3 
-            3 . . . . . 3 3 . . . . . . 3 . 
-            . 3 3 . . . . . 3 3 3 3 3 3 . . 
-            `, SpriteKind.Enemy)
+    if (2 <= info.life()) {
+        for (let index = 0; index < num; index++) {
+            newRATENEMIES = sprites.create(list._pickRandom(), SpriteKind.Enemy)
+            tiles.placeOnRandomTile(newRATENEMIES, sprites.dungeon.floorDark2)
+            newRATENEMIES.follow(Chef_1, 100)
+            pause(1000)
+        }
     }
 }
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.RAT_ATTACK, function (sprite, otherSprite) {
@@ -226,6 +190,22 @@ sprites.onOverlap(SpriteKind.MESS, SpriteKind.CLEANERPICKER, function (sprite, o
     sprites.destroy(sprite)
     pause(1000)
     sprites.destroy(otherSprite)
+    Goal = Goal + 1
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.floorDark2, function (sprite, location) {
+    if (info.life() == 1 && Chef_1.overlapsWith(ENEMY_KING_RAT)) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+        game.showLongText("YOU'RE TIME IS OVER!!!", DialogLayout.Bottom)
+        game.showLongText("Oh!", DialogLayout.Bottom)
+        game.showLongText("Oh!", DialogLayout.Bottom)
+        game.showLongText("Are those baked treats you have?", DialogLayout.Bottom)
+        game.showLongText("How about this...", DialogLayout.Bottom)
+        game.showLongText("You give me the baked treats, and I let you go home.", DialogLayout.Bottom)
+        game.showLongText("Deal?", DialogLayout.Bottom)
+        game.splash("It's the only way to go home...")
+        tiles.setCurrentTilemap(tilemap`maze`)
+        sprites.destroy(ENEMY_KING_RAT)
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
@@ -233,13 +213,13 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     pause(500)
 })
 let sprinkle_cake: Sprite = null
-let newRATENEMY3: Sprite = null
-let newRATENEMY2: Sprite = null
-let newRATENEMY1: Sprite = null
-let list: Sprite[] = []
+let list: Image[] = []
+let newRATENEMIES: Sprite = null
 let MOP_ATTACK: Sprite = null
 let MOP: Sprite = null
 let numBAKEDTREATS = 0
+let Goal = 0
+let ENEMY_KING_RAT: Sprite = null
 let Mess: Sprite = null
 let STRAWBERRY_CAKE: Sprite = null
 let magical_cheese: Sprite = null
@@ -247,6 +227,9 @@ let PINK_Healing_Cake: Sprite = null
 let Healing_Cake: Sprite = null
 let Rat__Enemy: Sprite = null
 let Chef_1: Sprite = null
+let newRATENEMY1 = null
+let newRATENEMY2 = null
+let newRATENEMY3 = null
 game.splash("The bakery is closing")
 game.splash("Theres no janitor to clean")
 game.splash("Looks like its your new job.")
@@ -453,17 +436,17 @@ for (let index = 0; index < 7; index++) {
     STRAWBERRY_CAKE = sprites.create(assets.image`cakeforratking`, SpriteKind.FOOD_FOR_RAT)
     tiles.placeOnRandomTile(STRAWBERRY_CAKE, assets.tile`myTile8`)
 }
-for (let index = 0; index < 10; index++) {
+for (let index = 0; index < 15; index++) {
     Mess = sprites.create(assets.image`WHAT A MESS`, SpriteKind.MESS)
     tiles.placeOnRandomTile(Mess, assets.tile`myTile8`)
 }
-let ENEMY_KING_RAT = sprites.create(assets.image`THE EVIL RAT`, SpriteKind.THE_BIG_DEAL)
+ENEMY_KING_RAT = sprites.create(assets.image`THE EVIL RAT`, SpriteKind.THE_BIG_DEAL)
 info.setScore(0)
-let Goal = 10
-tiles.placeOnTile(ENEMY_KING_RAT, tiles.getTileLocation(5, 26))
+Goal = 0
+tiles.placeOnTile(ENEMY_KING_RAT, tiles.getTileLocation(6, 26))
 numBAKEDTREATS = 0
 forever(function () {
-    if (info.score() == Goal) {
+    if (Goal == 10) {
         game.showLongText("You cleaned the whole place up! Good Job!", DialogLayout.Bottom)
         Goal = Goal + 1
     }
@@ -476,9 +459,9 @@ forever(function () {
         for (let index = 0; index < 5; index++) {
             sprinkle_cake = sprites.create(assets.image`treat`, SpriteKind.FOOD_FOR_RAT)
             tiles.placeOnRandomTile(sprinkle_cake, assets.tile`myTile8`)
+            pause(5000)
         }
         list.push(assets.image`treat`)
-        info.changeLifeBy(1)
     }
     if (numBAKEDTREATS == 21 && Goal == 11 && Chef_1.overlapsWith(ENEMY_KING_RAT)) {
         tiles.placeOnTile(Chef_1, tiles.getTileLocation(6, 26))
