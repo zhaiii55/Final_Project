@@ -136,25 +136,6 @@ c c c c c c c c c c c c c c c c
 . . . . 8 8 8 8 8 8 8 8 8 2 3 2 
 . . . c 3 2 3 2 3 2 3 2 3 2 3 c 
 `;
-            case "image9":
-            case "cakeforratking":return img`
-. . c . . . . . . . . . . . . . 
-. c 5 c . . . . . . . . . . . . 
-c 5 5 5 c c c c c c c c c c c . 
-. c 5 2 4 c 2 4 c 2 4 c 2 4 c . 
-. c c 3 d c 3 d c d 3 c d 3 c c 
-. c 3 d d d d d d d d d d 1 1 c 
-. c 3 d d d d d d d d d d d 1 c 
-. c 3 d d d d d d d d d d d d c 
-. c 3 3 d d d 3 3 d d d 3 3 d c 
-. c 3 d 3 d 3 d d 3 d 3 d d 3 c 
-. c 3 d d 3 d d d d 3 d d 5 d c 
-. c 3 d d d d d d d d d d 5 d c 
-. c 3 3 3 3 3 3 3 3 3 3 5 5 5 c 
-. c d d d d d d d d d d d 5 d c 
-. c c c c c c c c c c c c 5 c c 
-. . . . . . . . . . . . . c . . 
-`;
             case "image5":
             case "WHAT A MESS":return img`
 . . . . . . . . . . . . . . . . 
@@ -191,6 +172,44 @@ c 5 5 5 c c c c c c c c c c c .
 . c d 4 4 4 4 4 4 4 4 4 4 d c . 
 . c d d d d d d d d d d d d c . 
 . c c c c c c c c c c c c c c . 
+. . . . . . . . . . . . . . . . 
+`;
+            case "image11":
+            case "rat enemy 1":return img`
+. . . . . . . . . c c c c . . . 
+. . . . . . . . c c 3 3 c . . . 
+. . . c c c c c c 8 8 3 c . . . 
+. . c 8 8 8 8 8 8 8 8 c . . . . 
+. . c 8 3 3 8 2 8 8 c . c c c . 
+. . c 8 3 3 8 8 8 c . c 1 c 1 c 
+. . c 8 8 8 8 8 8 c c c 1 1 c c 
+. . . c c 8 8 8 8 1 8 1 1 1 1 c 
+. . . c c 8 8 1 1 1 8 8 c c c . 
+. c c 8 8 1 1 1 8 8 c c . . . . 
+. c 1 8 8 8 8 8 8 8 c c . . . . 
+. c c c 8 8 8 8 8 8 8 c . . . . 
+. . . c 8 8 8 8 8 8 8 c . . . . 
+. . c c 8 8 8 8 8 8 8 c c . . . 
+. . c 3 3 3 c c c 3 3 3 c . . . 
+. . c c c c c . c c c c c . . . 
+`;
+            case "image9":
+            case "cakeforratking":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . c c c c c c c c c c c c c . 
+. . c 2 4 c 2 4 c 4 2 c 4 2 c . 
+. c c 3 d c 3 d c d 3 c d 3 c c 
+. c 3 d d d d d d d d d d 1 1 c 
+. c 3 d d d d d d d d d d d 1 c 
+. c 3 d d d d d d d d d d d d c 
+. c 3 3 d d d 3 3 d d d 3 3 d c 
+. c 3 d 3 d 3 d d 3 d 3 d d 3 c 
+. c 3 d d 3 d d d d 3 d d d d c 
+. c 3 d d d d d d d d d d d d c 
+. c 3 3 3 3 3 3 3 3 3 3 3 3 3 c 
+. c d d d d d d d d d d d d d c 
+. c c c c c c c c c c c c c c c 
 . . . . . . . . . . . . . . . . 
 `;
         }

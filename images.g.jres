@@ -34,11 +34,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "THE EVIL RAT"
     },
-    "image9": {
-        "data": "hwQQABAAAAAADAAAAAAAAMDFzMzMzMwMXFU8MzMz0wzAJdPd093TDABM3d093dMMAMzc3d3T0wwALNPdPd3TDABM3d3T3dMMAMzc3dPd0wwALN3dPd3TDABM093d09MMAMzc3T3d0wwALN3d093VDABME93TVVXFAMwc0T3d1QwAAMzMzMzMDA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "cakeforratking"
-    },
     "image5": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAcKAKAAAA0O1+PQoAAODgfXKtCgAAAO5413cAAAAAfnh4dwAAANDdd3jnDgAAAO6qiAwAAAAAIOruBwAAAA6up4h3AAAAAAAACAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
@@ -48,6 +43,16 @@
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAwMwMAAAAwMzM3QwAAADM4+XUDAAAAOweTtQMAMDM7OVE1AwAwNEdPk7UDADAHO3uRNQMAAAcXR5O1AwAAMzs407UDAAAAOzuRNQMAAAA7OXu1AwAAADMPk7UDAAAAMDMzN0MAAAAAADAzAwAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "treat"
+    },
+    "image11": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAADAzAAAAMDMDMDBwMwAjIjIjMjMwwCMM8iMiIjDAIwziBiIiMMAjIiIGIiIzACMgogRiIgMwIyIiIGIiMzMiMgcgYiIwzyIDIzIjIjDPMPAHMjMzMPMDBwRDADAzAAAzBEMAAAAAAAcHAwAAAAAAMDMAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "rat enemy 1"
+    },
+    "image9": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAzMzMzMwMAMw8MzMz0wwALNPd093TDABM3d093dMMAMzc3d3T0wwALNPdPd3TDABM3d3T3dMMAMzc3dPd0wwATN3dPd3TDAAs093d09MMAMzc3T3d0wwATN3d093TDAAsE93T3dMMAMwc0T3d0wwAAMzMzMzMDA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "cakeforratking"
     },
     "anim1": {
         "namespace": "myAnimations",
